@@ -34,10 +34,11 @@
 **/
 $("document").ready(function() {
 
-  data = JSON.parse(decodeURIComponent(location.search.substr(6)))
-
-  if (typeof data !== "object") {
-    console.log("Unable to process passed data");
+  try {
+    data = JSON.parse(decodeURIComponent(location.search.substr(6)))
+  } catch(err) {
+  	data = {};
+  	console.log("Unable to process passed data");
   }
 
   function transformStr(string, replacementArray) {
